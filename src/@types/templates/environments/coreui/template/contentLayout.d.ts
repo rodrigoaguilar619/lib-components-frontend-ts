@@ -1,0 +1,1 @@
+interface ContentLayoutPropsI extends AppRoutesPropsI {};
