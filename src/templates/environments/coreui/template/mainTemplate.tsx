@@ -1,3 +1,4 @@
+import { MainTemplatePropsI } from '@app/@types/templates/environments/coreui/template/mainTemplate';
 import React, { Component, Suspense } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 

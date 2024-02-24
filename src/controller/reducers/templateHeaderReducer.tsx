@@ -1,7 +1,7 @@
 import { Reducer } from "redux";
-import { ACTION_TEMPLATE_HEADER_TITLE_SET, ACTION_TEMPLATE_HEADER_SUBTITLE_SET } from "../../controller/actions/templateHeaderAction";
-import { TemplateHeaderStateI, TemplateHeaderActionI } from "../../@types/controller/reducers/templateHeaderReducer";
-import { _APP_TITLE_ } from "../../catalogs/constantCatalog";
+import { ACTION_TEMPLATE_HEADER_TITLE_SET, ACTION_TEMPLATE_HEADER_SUBTITLE_SET } from "@app/controller/actions/templateHeaderAction";
+import { TemplateHeaderStateI, TemplateHeaderActionI } from "@app/@types/controller/reducers/templateHeaderReducer";
+import { _APP_TITLE_ } from "@app/catalogs/constantCatalog";
 
 const initialState: TemplateHeaderStateI = {
     title: _APP_TITLE_,

@@ -27,3 +27,5 @@ $enable-rtl: true;
 
 // If you want to add custom CSS you can put it here.
 @import "custom";
+@import "../../../scss/plugins/primeReact.scss";
+@import "../../../scss/plugins/reactTooltip.scss";

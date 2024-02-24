@@ -1,13 +1,14 @@
-import { TemplateAlertStateI } from "../../../../../@types/controller/reducers/templateAlertsReducer";
+import { TemplateAlertStateI } from "@app/@types/controller/reducers/templateAlertsReducer";
 import { useSelector } from "react-redux";
-import AlertsComponent from "../../../../../components/alerts/AlertsComponent";
+import AlertsComponent from "@app/components/alerts/AlertsComponent";
+import { ComponentTypeEnum } from "@app/catalogs/enumCatalog";
 
-const AlertLayout = (props: { store: any; }) => {
+const AlertLayout = (props: { componentType: ComponentTypeEnum }) => {
 
-    const templateAlertState: TemplateAlertStateI = useSelector((state: any) => state.templateAlertState);
+    const templateAlertState: TemplateAlertStateI = useSelector((state: any) =>  ComponentTypeEnum.MODULE === props.componentType ? state.templateAlertState : state.templateAlertPopUpState);
 
     return (
-        <AlertsComponent alertList={templateAlertState.messages} store={props.store} />
+        <AlertsComponent alertList={templateAlertState.messages} componentType={props.componentType} />
     )
 }
 

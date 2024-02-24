@@ -1,6 +1,6 @@
 import React from 'react';
 import LoadingOverlay from 'react-loading-overlay-ts';
-import { TemplateLoadingStateI } from '../../@types/controller/reducers/templateLoadingReducer';
+import { TemplateLoadingStateI } from '@app/@types/controller/reducers/templateLoadingReducer';
 
 const LoadingFreezePageComponent: React.FC<TemplateLoadingStateI> = (props) => {
 

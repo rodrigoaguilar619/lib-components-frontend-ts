@@ -9,5 +9,6 @@ export interface RootTemplateStateI {
     templateFooterState: TemplateFooterStateI;
     templateMenuState: TemplateMenuStateI;
     templateAlertState: TemplateAlertStateI;
+    templateAlertPopUpState: TemplateAlertStateI,
     templateLoadingState: TemplateLoadingStateI,
 }

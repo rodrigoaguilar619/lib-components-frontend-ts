@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
-import { REDUCER_SET_SIDEBAR_SHOW, REDUCER_SET_SIDEBAR_SHOW_REDUCE } from "../actions/coreuiSideBarAction";
-import { CoreuiSideBarStateI, CoreuiSideBarActionI } from "../../../../../@types/templates/environments/coreui/controllers/reducers/coreuiSideBarReducer";
+import { REDUCER_SET_SIDEBAR_SHOW, REDUCER_SET_SIDEBAR_SHOW_REDUCE } from "@app/templates/environments/coreui/controllers/actions/coreuiSideBarAction";
+import { CoreuiSideBarStateI, CoreuiSideBarActionI } from "@app/@types/templates/environments/coreui/controllers/reducers/coreuiSideBarReducer";
 
 const initialState: CoreuiSideBarStateI = {
   sidebarShow: true,

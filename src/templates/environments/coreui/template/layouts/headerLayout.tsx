@@ -8,8 +8,8 @@ import {
 import CIcon from '@coreui/icons-react'
 import { cilMenu } from '@coreui/icons'
 
-import { setSidebarShowAction } from '../../controllers/actions/coreuiSideBarAction'
-import { TemplateHeaderStateI } from '../../../../../@types/controller/reducers/templateHeaderReducer'
+import { setSidebarShowAction } from '@app/templates/environments/coreui/controllers/actions/coreuiSideBarAction'
+import { TemplateHeaderStateI } from '@app/@types/controller/reducers/templateHeaderReducer'
 
 const HeaderLayout = () => {
   const dispatch = useDispatch();

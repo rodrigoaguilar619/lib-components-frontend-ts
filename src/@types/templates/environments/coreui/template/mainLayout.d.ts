@@ -1,3 +1,4 @@
-interface MainLayoutPropsI extends MainTemplatePropsI {
-    store: any
+import { MainTemplatePropsI } from "./mainTemplate";
+
+export interface MainLayoutPropsI extends MainTemplatePropsI {
 }

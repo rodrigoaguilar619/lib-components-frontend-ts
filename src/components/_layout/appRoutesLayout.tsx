@@ -1,3 +1,4 @@
+import { AppRoutesPropsI, AppRoutesPropsRouteI } from '@app/@types/components/layout/appRoutesLayout';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 const AppRoutesLayout: React.FC<AppRoutesPropsI> = (props) => {

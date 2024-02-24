@@ -1,5 +1,4 @@
-interface MainAppPropsI {
-    store: any,
+export interface MainAppPropsI {
     routesSection: AppRoutesPropsI,
     menusSection: AppMenusPropsI
 }

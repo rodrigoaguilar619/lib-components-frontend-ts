@@ -3,9 +3,16 @@ import { thunk } from 'redux-thunk';
 import logger from 'redux-logger';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
-import { rootReducerGroup } from '../../../controller/reducers/_rootTemplateReducer';
-import { _APP_REDUX_IS_LOAD_LOGGER_ } from '../../../catalogs/constantCatalog';
+import { rootReducerGroup } from '@app/controller/reducers/_rootTemplateReducer';
+import { _APP_REDUX_IS_LOAD_LOGGER_ } from '@app/catalogs/constantCatalog';
 
+/**
+ * Function to create a custom Redux store with combined reducers and middleware.
+ *
+ * @param {any} combinedReducersGroupExtra - additional combined reducers
+ * @param {string} titleDevTools - title for the Redux DevTools
+ * @return {Store<any, any> & { dispatch: unknown }} the created Redux store
+ */
 export function createStoreCustom(combinedReducersGroupExtra: any, titleDevTools: string) {
 
     type MiddlewareType = Middleware<{}, any, any>;

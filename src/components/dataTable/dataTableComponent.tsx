@@ -2,14 +2,31 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { useRef, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
-import { tableConfigDefault } from '../tableConfigDefault';
+import { tableConfigDefault } from './tableConfigDefault';
+import { maskData } from '@app/utils/dataUtils/maskDataUtil';
+import { DataTableColumnOptionsPropsI, DataTableComponentI } from '@app/@types/components/dataTable/dataTable';
 
-const DataTablePrimeReactComponent: React.FC<DataTableComponentI> = (props) => {
+const buildColumnOptions = (columnOptionsTemplate: DataTableColumnOptionsPropsI | undefined) => {
+
+    if (columnOptionsTemplate === undefined)
+        return undefined;
+
+    return (<Column key={"datatable_options"}
+        //field={"options"}
+        header={columnOptionsTemplate.header}
+        alignHeader={columnOptionsTemplate.tableConfig.aligns?.alignHeader ?? tableConfigDefault.aligns?.alignHeader}
+        align={columnOptionsTemplate.tableConfig.aligns?.alignCell ?? tableConfigDefault.aligns?.alignCell}
+        style={columnOptionsTemplate.tableConfig.styleCss}
+        body={columnOptionsTemplate.actionTemplate}
+    />);
+};
+
+const DataTableComponent: React.FC<DataTableComponentI> = (props) => {
 
     const [globalFilterValue, setGlobalFilterValue] = useState('');
     const [totalRecordsData, setTotalRecordsData] = useState({ totalRecordsGlobalFilter: null });
     const dt = useRef<DataTable<any>>(null);
-    
+
     const updateTotalRecords = (fieldName: string, value: number | null) => {
         setTotalRecordsData({ ...totalRecordsData, [fieldName]: value });
     };
@@ -42,7 +59,7 @@ const DataTablePrimeReactComponent: React.FC<DataTableComponentI> = (props) => {
         return (
             <div className="flex justify-content-end">
                 <div style={{ display: "flex", width: "100%" }}>
-                <div style={{ textAlign: "center", width: "20%", lineHeight: "30px" }}></div>
+                    <div style={{ textAlign: "center", width: "20%", lineHeight: "30px" }}></div>
                     <div style={{ textAlign: "center", width: "60%", lineHeight: "30px" }}><div><b>Title</b></div></div>
                     <div style={{ textAlign: "right", width: "20%" }}>
                         <span className="p-input-icon-left">
@@ -66,6 +83,7 @@ const DataTablePrimeReactComponent: React.FC<DataTableComponentI> = (props) => {
         <DataTable ref={dt} value={props.columnDataList} tableStyle={{ minWidth: '50rem' }}
             paginator={true} rows={10} footer={footer} header={header} globalFilter={globalFilterValue}
             rowsPerPageOptions={[10, 25, 50]}>
+            {buildColumnOptions(props.columnOptionsTemplate)}
             {props.columnDefList.map((col) => (
                 <Column key={col.field}
                     field={col.field}
@@ -74,10 +92,11 @@ const DataTablePrimeReactComponent: React.FC<DataTableComponentI> = (props) => {
                     align={col.tableConfig.aligns?.alignCell ?? tableConfigDefault.aligns?.alignCell}
                     style={col.tableConfig.styleCss}
                     {...col.tableConfig.pluginProps}
+                    body={(rowData) => { return maskData(rowData[col.field], col.maskProps ?? undefined); }}
                 />
             ))}
         </DataTable>
     )
 }
 
-export default DataTablePrimeReactComponent
+export default DataTableComponent

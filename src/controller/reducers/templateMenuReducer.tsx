@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
-import { TemplateMenuActionI, TemplateMenuStateI } from "../../@types/controller/reducers/templateMenuReducer";
-import { ACTION_TEMPLATE_MENU_LIST_SET } from "../../controller/actions/templateMenuAction";
+import { TemplateMenuActionI, TemplateMenuStateI } from "@app/@types/controller/reducers/templateMenuReducer";
+import { ACTION_TEMPLATE_MENU_LIST_SET } from "@app/controller/actions/templateMenuAction";
 
 const initialState: TemplateMenuStateI = {
   menus: []

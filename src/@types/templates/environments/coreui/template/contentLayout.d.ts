@@ -1,1 +1,3 @@
-interface ContentLayoutPropsI extends AppRoutesPropsI {};
+export interface ContentLayoutPropsI {
+    routesSection: AppRoutesPropsI
+};

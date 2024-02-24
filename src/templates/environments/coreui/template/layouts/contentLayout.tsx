@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react'
 import { CContainer, CSpinner } from '@coreui/react'
 
-import AppRoutesLayout from '../../../../../components/_layout/appRoutesLayout'
+import AppRoutesLayout from '@app/components/_layout/appRoutesLayout'
+import { ContentLayoutPropsI } from '@app/@types/templates/environments/coreui/template/contentLayout'
 
-const ContentLayout: React.FC<MainLayoutPropsI> = (props) => {
+const ContentLayout: React.FC<ContentLayoutPropsI> = (props) => {
   return (
     <CContainer lg>
       <Suspense fallback={<CSpinner color="primary" />}>

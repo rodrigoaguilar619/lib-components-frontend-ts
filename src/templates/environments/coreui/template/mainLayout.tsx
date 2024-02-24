@@ -6,6 +6,8 @@ import ContentLayout from './layouts/contentLayout'
 import AlertLayout from './layouts/alertLayout'
 import LoadingLayout from './layouts/loadingLayout'
 import { useLocation } from 'react-router-dom'
+import { ComponentTypeEnum } from '@app/catalogs/enumCatalog'
+import { MainLayoutPropsI } from '@app/@types/templates/environments/coreui/template/mainLayout'
 
 const MainLayout: React.FC<MainLayoutPropsI> = (props) => {
 
@@ -25,7 +27,7 @@ const MainLayout: React.FC<MainLayoutPropsI> = (props) => {
       <div className="wrapper d-flex flex-column min-vh-100 bg-light">
         <HeaderLayout />
         <div className="body flex-grow-1 px-3">
-          <AlertLayout store={props.store} />
+          <AlertLayout componentType={ComponentTypeEnum.MODULE} />
           <ContentLayout {...props} />
         </div>
         <FooterLayout />

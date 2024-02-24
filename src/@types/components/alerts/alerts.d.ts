@@ -3,14 +3,15 @@ export interface AlertsDataI {
     message: string;
     alertType: AlertTypeEnum;
     summary: string;
+    timerShowMessageFunction: NodeJS.Timeout;
 }
 
-interface AlertsPropsI {
+export interface AlertsPropsI {
     isActive: boolean;
     text: string;
 }
 
-interface AlertsComponentI {
+export interface AlertsComponentI {
     alertList: AlertsDataI[];
-    store: any;
+    componentType: ComponentTypeEnum;
 }

@@ -1,13 +1,13 @@
-import { URL_DATATABLE_LIST_GET } from "../../../catalogs/uriCatalog";
-import { HttpMethodEnum } from "../../../catalogs/enumCatalog";
-import { manageCallApiAuthPromise } from "../../../utils/webUtils/httpManagerUtil";
-import { generateDebugClassService } from "../../../utils/webUtils/debugUtil";
+import { URL_DATATABLE_LIST_GET } from "@app/catalogs/uriCatalog";
+import { HttpMethodEnum } from "@app/catalogs/enumCatalog";
+import { manageCallApiAuthPromise } from "@app/utils/webUtils/httpManagerUtil";
+import { generateDebugClassService } from "@app/utils/webUtils/debugUtil";
 
-export function getDataTableDataService(paramId: number) {
+export function getDataTableDataService(paramId: number, filterData?: Record<string, any>) {
 
     let debugClass = generateDebugClassService("Get datatable list");
 
-    let params = { paramId: paramId };
+    let params = { paramId: paramId, filterData: filterData };
     let url = URL_DATATABLE_LIST_GET;
     
     return manageCallApiAuthPromise(debugClass, url, params, {}, HttpMethodEnum.POST);

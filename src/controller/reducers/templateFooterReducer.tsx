@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
-import { TemplateFooterActionI, TemplateFooterStateI } from "../../@types/controller/reducers/templateFooterReducer";
-import { ACTION_TEMPLATE_FOOTER_TEXT_SET } from "../../controller/actions/templateFooterAction";
+import { TemplateFooterActionI, TemplateFooterStateI } from "@app/@types/controller/reducers/templateFooterReducer";
+import { ACTION_TEMPLATE_FOOTER_TEXT_SET } from "@app/controller/actions/templateFooterAction";
 
 const initialState: TemplateFooterStateI = {
     text: "",

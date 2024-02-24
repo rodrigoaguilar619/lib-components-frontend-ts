@@ -1,4 +1,4 @@
-import { TemplateMenuDataI } from "../../@types/controller/reducers/templateMenuReducer";
+import { TemplateMenuDataI } from "@app/@types/controller/reducers/templateMenuReducer";
 
 export const ACTION_TEMPLATE_MENU_LIST_SET = "ACTION_TEMPLATE_MENU_LIST_SET";
 

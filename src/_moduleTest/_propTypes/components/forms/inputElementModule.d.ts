@@ -1,0 +1,2 @@
+interface InputElementModulePropsI extends ParentComponentPropsI {
+}

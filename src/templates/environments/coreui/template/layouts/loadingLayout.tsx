@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { TemplateLoadingStateI } from "../../../../../@types/controller/reducers/templateLoadingReducer";
-import LoadingFreezePageComponent from "../../../../../components/loadings/loadingFreezePageComponent";
+import { TemplateLoadingStateI } from "@app/@types/controller/reducers/templateLoadingReducer";
+import LoadingFreezePageComponent from "@app/components/loadings/loadingFreezePageComponent";
 
 const LoadingLayout = () => {
 

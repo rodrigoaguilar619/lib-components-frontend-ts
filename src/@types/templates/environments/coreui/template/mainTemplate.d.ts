@@ -1,5 +1,4 @@
-interface MainTemplatePropsI {
-    store: any;
+export interface MainTemplatePropsI {
     routesSection: AppRoutesPropsI;
     menusSection: AppMenusPropsI;
 }

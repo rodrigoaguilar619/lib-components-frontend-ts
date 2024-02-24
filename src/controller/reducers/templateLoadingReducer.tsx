@@ -1,6 +1,6 @@
 import { Reducer } from "redux"
-import { TemplateLoadingStateI } from "../../@types/controller/reducers/templateLoadingReducer"
-import { ACTION_TEMPLATE_LOADING_ACTIVE_MESSAGE_SET, ACTION_TEMPLATE_LOADING_IS_ACTIVE_SET } from "../actions/templateLoadingAction"
+import { TemplateLoadingStateI } from "@app/@types/controller/reducers/templateLoadingReducer"
+import { ACTION_TEMPLATE_LOADING_ACTIVE_MESSAGE_SET, ACTION_TEMPLATE_LOADING_IS_ACTIVE_SET } from "@app/controller/actions/templateLoadingAction"
 
 const initialState: TemplateLoadingStateI = {
     isActive: false,

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-bootstrap';
-import { AlertTypeEnum } from '../../catalogs/enumCatalog';
-import { removeAlertRedux } from '../../utils/componentUtils/alertUtil';
-import { AlertsComponentI, AlertsDataI } from '../../@types/components/alerts/alerts';
+import { AlertTypeEnum } from '@app/catalogs/enumCatalog';
+import { removeAlertRedux } from '@app/utils/componentUtils/alertUtil';
+import { AlertsComponentI, AlertsDataI } from '@app/@types/components/alerts/alerts';
+import { useDispatch } from 'react-redux';
 
 const AlertsComponent: React.FC<AlertsComponentI> = (props) => {
     
+    const dispatch = useDispatch();
     const [msgList, setMsgList] = useState<React.ReactNode[]>([]);
 
     useEffect(() => {
@@ -31,7 +33,7 @@ const AlertsComponent: React.FC<AlertsComponentI> = (props) => {
         if (message.alertType === AlertTypeEnum.ERROR)
             severity = "danger";
     
-        return (<div key={key + "_" + message.id}><Alert variant={severity} onClose={() => { removeAlertRedux(props.store, message.id) }} dismissible>
+        return (<div key={key + "_" + message.id}><Alert variant={severity} onClose={() => { removeAlertRedux(dispatch, props.componentType, props.alertList, message.id) }} dismissible>
         <b>{message.summary}</b> {message.message}
       </Alert></div>)
     }

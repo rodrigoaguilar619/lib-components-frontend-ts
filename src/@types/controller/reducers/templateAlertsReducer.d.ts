@@ -1,15 +1,10 @@
-import { AlertTypeEnum } from "../../../catalogs/enumCatalog";
+import { AlertsDataI } from "@app/@types/components/alerts/alerts";
+import { AlertTypeEnum } from "@app/catalogs/enumCatalog";
 
-export interface TemplateAlertMessageDataI {
-    id: number;
-    message: string;
-    alertType: AlertTypeEnum;
-    summary: string;
-    timerShowMessageFunction: NodeJS.Timeout;
+export interface TemplateAlertMessageDataI extends AlertsDataI {
 }
 
 export interface TemplateAlertStateI {
-    timeShowing: number;
     messages: TemplateAlertMessageDataI[];
 }
 

@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".", //compile files where paths are defined starting with 'src'
+    "paths": {
+      "@app/*": ["src/*"]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -21,11 +24,12 @@
     "noEmit": false,
     "declaration": true,
     "jsx": "react-jsx",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "rootDir": "src",
   },
   "include": [
     //"src/**/*.ts", "src/**/*.tsx", "src/**/*.css"
     "src"
-  ],
+, "_tests"  ],
   "exclude": ["node_modules"]
 }

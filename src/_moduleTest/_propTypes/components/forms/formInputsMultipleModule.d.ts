@@ -1,0 +1,2 @@
+interface FormInputsMultipleModulePropsI extends ParentComponentPropsI {
+}

@@ -1,0 +1,2 @@
+interface DataTableModulePropsI extends ParentComponentPropsI {
+}

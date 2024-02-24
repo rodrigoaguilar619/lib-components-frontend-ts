@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,6 +9,13 @@ const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
+/**
+ * Returns a common configuration object based on the provided environment and arguments.
+ *
+ * @param {string} enviroment - the environment for which the configuration is being generated
+ * @param {Record<string, any>} args - additional arguments for configuration
+ * @return {object} the common configuration object
+ */
 function getCommonConfig(enviroment: string, args: Record<string, any>) {
 
     return {
@@ -24,7 +30,8 @@ function getCommonConfig(enviroment: string, args: Record<string, any>) {
             extensions: ['.ts', '.tsx', '.js', '.jsx'],
             modules: [path.resolve('node_modules'), 'node_modules'],
             alias: {
-                src: path.resolve(args.dirname, '../../src'),
+                "src": path.resolve(args.dirname, '../../src'),
+                "@app": path.resolve(args.dirname, '../../src')
             },
         },
         module: {
@@ -42,15 +49,9 @@ function getCommonConfig(enviroment: string, args: Record<string, any>) {
                     ],
                 },
                 {
-                    test: /\.css$/,
+                    test: /\.(sa|sc|c)ss$/,
                     use: [
-                        MiniCssExtractPlugin.loader, 'css-loader', "sass-loader"
-                    ],
-                },
-                {
-                    test: /\.scss$/,
-                    use: [
-                        'style-loader',  // Creates style nodes from JS strings
+                        enviroment === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
                         'css-loader',    // Translates CSS into CommonJS
                         'sass-loader'    // Compiles Sass to CSS
                     ],
@@ -62,7 +63,11 @@ function getCommonConfig(enviroment: string, args: Record<string, any>) {
                         loader: 'babel-loader',
                         options: {
                             presets: ['@babel/preset-env', '@babel/preset-react'],
-                            plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-syntax-dynamic-import', "react-hot-loader/babel"]
+                            plugins: [
+                                '@babel/plugin-proposal-class-properties',
+                                '@babel/plugin-syntax-dynamic-import',
+                                "react-hot-loader/babel",
+                            ]
                         }
                     },
                 },
@@ -76,6 +81,13 @@ function getCommonConfig(enviroment: string, args: Record<string, any>) {
     }
 }
 
+/**
+ * Returns an array of common plugins based on the environment and arguments.
+ *
+ * @param {string} enviroment - the environment string
+ * @param {Record<string, any>} args - the arguments object
+ * @return {Array} an array of common plugins
+ */
 function getCommonPlugins(enviroment: string, args: Record<string, any>) {
     return [
         new Dotenv({
@@ -89,20 +101,28 @@ function getCommonPlugins(enviroment: string, args: Record<string, any>) {
     ]
 }
 
+/**
+ * Execute common configuration for the given environment and arguments.
+ *
+ * @param {string} enviroment - the environment for configuration
+ * @param {Record<string, any>} args - the arguments for configuration
+ * @return {object} the merged common configuration
+ */
 function executeCommonConfig(enviroment: string, args: Record<string, any>) {
-    
+
     return {
         ...getCommonConfig(enviroment, args),
         plugins: [
-            ...getCommonPlugins(enviroment, args),
             new MiniCssExtractPlugin({
-                filename: `styles/[name].[hash].css`
+                filename: `styles/[name].[hash].css`,
+                chunkFilename: 'styles/[name].[hash].chunk.js',
             }),
+            ...getCommonPlugins(enviroment, args),
             new CleanWebpackPlugin(),
         ],
         optimization: {
             minimize: true,
-            usedExports: true, //remvoe unused files
+            usedExports: true, //removes unused files
             concatenateModules: true,
             splitChunks: {
                 chunks: 'all',
@@ -111,12 +131,12 @@ function executeCommonConfig(enviroment: string, args: Record<string, any>) {
                 new CssMinimizerPlugin(),
                 new TerserPlugin({
                     terserOptions: {
-                      compress: {
-                        //drop_console: enviroment === 'production' ? true : false,
-                        pure_funcs: enviroment === 'production' ? ['console.log'] : []
-                      },
+                        compress: {
+                            //drop_console: enviroment === 'production' ? true : false,
+                            pure_funcs: enviroment === 'production' ? ['console.log'] : []
+                        },
                     },
-                  }),
+                }),
                 new ScriptExtHtmlWebpackPlugin({ custom: { test: /\.js$/, attribute: 'charset', value: 'UTF-8' } }),
                 new BundleAnalyzerPlugin({
                     analyzerMode: 'static',
@@ -128,8 +148,15 @@ function executeCommonConfig(enviroment: string, args: Record<string, any>) {
     }
 }
 
+/**
+ * Executes common server configuration based on the environment and arguments.
+ *
+ * @param {string} enviroment - the environment for which the configuration is executed
+ * @param {Record<string, any>} args - the arguments for the configuration
+ * @return {object} the merged common configuration with plugins
+ */
 function executeCommonServerConfig(enviroment: string, args: Record<string, any>) {
-    
+
     return {
         ...getCommonConfig(enviroment, args),
         plugins: [

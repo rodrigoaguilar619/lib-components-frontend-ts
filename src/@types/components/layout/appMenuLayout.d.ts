@@ -1,4 +1,4 @@
-interface AppMenusItemsPropsDataI
+export interface AppMenusItemsPropsDataI
 {
     component: React.ElementType;
     name: string;
@@ -11,20 +11,20 @@ interface AppMenusItemsPropsDataI
     items?: AppSidebarNavItem[];
 }
 
-interface AppMenusPropsDataI {
+export interface AppMenusPropsDataI {
     text?: string;
     url?: string;
     icon?: string;
     children?: AppMenusPropsDataI
 }
 
-interface AppMenusPropsI {
+export interface AppMenusPropsI {
     menu?: AppMenusPropsDataI[];            //for backend, after to process and convert like AppMenusItemsPropsDataI
     menuItems?: AppMenusItemsPropsDataI[];  //for hardcoded menu, defined on project
     isFromApi?: boolean
 }
 
 
-interface AppMenusSideBarPropsI {
+export interface AppMenusSideBarPropsI {
     items: AppMenusItemsPropsDataI[];
 }

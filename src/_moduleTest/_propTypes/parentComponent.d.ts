@@ -1,0 +1,3 @@
+interface ParentComponentPropsI {
+    componentType: ComponentTypeEnum
+}

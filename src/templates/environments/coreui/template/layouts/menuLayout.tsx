@@ -1,14 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
 import { CSidebar, CSidebarNav, CSidebarToggler } from '@coreui/react'
-
 import SimpleBar from 'simplebar-react'
 
-import { setSidebarShowFoldableAction, setSidebarShowAction } from '../../controllers/actions/coreuiSideBarAction';
-
-import { CoreuiSideBarStateI } from '../../../../../@types/templates/environments/coreui/controllers/reducers/coreuiSideBarReducer'
+import { setSidebarShowFoldableAction, setSidebarShowAction } from '@app/templates/environments/coreui/controllers/actions/coreuiSideBarAction';
+import { CoreuiSideBarStateI } from '@app/@types/templates/environments/coreui/controllers/reducers/coreuiSideBarReducer'
 import { SidebarNavLayout } from './sidebarNavLayout'
+import { AppMenusItemsPropsDataI, AppMenusPropsI } from '@app/@types/components/layout/appMenuLayout';
 
 const MenuLayout: React.FC<AppMenusPropsI> = (props) => {
   const dispatch = useDispatch();

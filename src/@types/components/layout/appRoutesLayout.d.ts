@@ -1,10 +1,10 @@
-interface AppRoutesPropsRouteI {
+export interface AppRoutesPropsRouteI {
     path: string;
     exact?: boolean;
     element: React.ComponentType<any>;
 }
 
-interface AppRoutesPropsI {
+export interface AppRoutesPropsI {
     routes: AppContentPropsRouteI[];
     routeStart: string
 }
